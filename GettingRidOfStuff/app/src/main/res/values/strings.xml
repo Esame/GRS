@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GettingRidOfStuff</string>
+    <string name="str_inventory_title">Your Stuff</string>
+    <string name="str_inventory_route_button">Find My Route</string>
+    <string name="str_header_title">GRS</string>
+    <string name="str_menu_button">Menu</string>
 </resources>
