@@ -1,0 +1,67 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <SearchView
+        android:id="@+id/address"
+
+        android:inputType="textLongMessage"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:queryHint="Location" ></SearchView>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="335dp"
+        android:layout_gravity="top"
+        android:contentDescription="Bellingham Map"
+        android:src="@drawable/bellingham"/>
+
+    <Button
+
+        android:id="@+id/button_1"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:text="Example Location"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/lightGray"
+        android:textSize="18sp" />
+
+
+
+    <Button
+        android:id="@+id/button_2"
+        style="@style/ButtonStyle"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:text="Example Location"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/lightGray"
+        android:textSize="18sp" />
+
+
+
+
+    <Button
+        android:id="@+id/button_3"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:text="Example Location"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:backgroundTint="@color/lightGray"
+        />
+
+
+
+
+
+</LinearLayout>
