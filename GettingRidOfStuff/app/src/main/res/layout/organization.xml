@@ -6,6 +6,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <include layout="@layout/header"/>
+
     <SearchView
         android:id="@+id/address"
 
@@ -15,6 +17,7 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:queryHint="Location" ></SearchView>
+
 
     <ImageView
         android:layout_width="fill_parent"
@@ -26,24 +29,24 @@
     <Button
 
         android:id="@+id/button_1"
-        style="@style/ButtonStyle"
+        android:style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:text="Example Location"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:backgroundTint="@color/lightGray"
+        android:backgroundTint="@color/dark_blue"
         android:textSize="18sp" />
 
 
 
     <Button
         android:id="@+id/button_2"
-        style="@style/ButtonStyle"
+        android:style="@style/ButtonStyle"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:text="Example Location"
         android:textColor="@color/black"
-        android:backgroundTint="@color/lightGray"
+        android:backgroundTint="@color/dark_blue"
         android:textSize="18sp" />
 
 
@@ -51,13 +54,13 @@
 
     <Button
         android:id="@+id/button_3"
-        style="@style/ButtonStyle"
+        android:style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:text="Example Location"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:backgroundTint="@color/lightGray"
+        android:backgroundTint="@color/dark_blue"
         />
 
 
