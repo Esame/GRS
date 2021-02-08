@@ -29,8 +29,8 @@
     <Button
 
         android:id="@+id/button_1"
-        android:style="@style/ButtonStyle"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Example Location"
         android:textColor="@color/black"
         android:layout_gravity="center"
@@ -41,9 +41,9 @@
 
     <Button
         android:id="@+id/button_2"
-        android:style="@style/ButtonStyle"
         android:layout_gravity="center"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Example Location"
         android:textColor="@color/black"
         android:backgroundTint="@color/dark_blue"
@@ -54,8 +54,8 @@
 
     <Button
         android:id="@+id/button_3"
-        android:style="@style/ButtonStyle"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Example Location"
         android:textColor="@color/black"
