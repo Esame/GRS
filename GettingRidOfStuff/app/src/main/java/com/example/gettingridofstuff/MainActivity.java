@@ -21,16 +21,34 @@ public class MainActivity extends AppCompatActivity {
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventorybutton.setOnClickListener(bh);
     }
+    public void home(View view){
+        return;
+        //animation should come from right to left because inventory is farthest right
+        //overridePendingTransition(to left enter, to left exit);
+
+
+    }
     public void organization(View view){
-        this.finish();
         Intent myIntent = new Intent(this, activity_organization.class);
         this.startActivity(myIntent);
         //animation should come from right to left because inventory is farthest right
         //overridePendingTransition(to left enter, to left exit);
     }
     public void inventory(View view){
-        //should do nothing because it is the current screen
-        return;
+        Intent myIntent = new Intent(this, inventoryActivity.class);
+        this.startActivity(myIntent);
+        //animation should come from left to right because organization is farthest right
+        //overridePendingTransition(to right enter,to right enter);
+
+    }
+    public void navigation(View v){
+
+    }
+    public void search(View v){
+
+    }
+    public void filter(View v){
+
     }
     private class ButtonHandler implements View.OnClickListener{
 
