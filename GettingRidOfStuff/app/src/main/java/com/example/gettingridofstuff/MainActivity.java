@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, activity_organization.class);
         this.startActivity(myIntent);
         //animation should come from right to left because inventory is farthest right
-        overridePendingTransition(R.anim.right_to_left, R.anim.right_to left);
+        overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
     }
     /*inventory onClick function should make the inventory_activity the current view*/
     public void inventory(View view){
