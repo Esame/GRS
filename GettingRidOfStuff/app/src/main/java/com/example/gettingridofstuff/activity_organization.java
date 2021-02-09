@@ -27,6 +27,7 @@ public class activity_organization extends AppCompatActivity {
 
     public void home(View view){
         this.finish();
+
         //animation should come from left to right because organization is farthest right
         //overridePendingTransition(to right enter,to right enter);
 
@@ -41,6 +42,8 @@ public class activity_organization extends AppCompatActivity {
 
     public void inventory(View view){
         this.finish();
+        Intent myIntent = new Intent(this, inventoryActivity.class);
+        this.startActivity(myIntent);
         //animation should come from left to right because organization is farthest right
         //overridePendingTransition(to right enter,to right enter);
 

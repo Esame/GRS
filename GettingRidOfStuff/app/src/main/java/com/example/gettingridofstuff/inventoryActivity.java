@@ -33,6 +33,8 @@ public class inventoryActivity extends AppCompatActivity {
 
     public void organization(View view){
         this.finish();
+        Intent myIntent = new Intent(this, activity_organization.class);
+        this.startActivity(myIntent);
         //animation should come from right to left because inventory is farthest right
         //overridePendingTransition(to left enter, to left exit);
     }
