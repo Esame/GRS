@@ -34,13 +34,20 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/item_name_input"/>
 
+    <Spinner
+        android:id="@+id/category_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/item_quantity_input"/>
+
     <Button
-        android:id="@+id/btn_inventory_route"
+        android:id="@+id/btn_inventory_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40sp"
-        android:layout_marginLeft="20sp"
+        android:layout_below="@id/category_spinner"
+        android:layout_margin="20dp"
         android:text="Cancel"
         android:textSize="20sp"/>
 
@@ -48,10 +55,9 @@
         android:id="@+id/btn_inventory_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="40sp"
-        android:layout_marginRight="20sp"
+        android:layout_below="@id/category_spinner"
+        android:layout_margin="20dp"
         android:text="Confirm"
         android:textSize="20sp"/>
 
