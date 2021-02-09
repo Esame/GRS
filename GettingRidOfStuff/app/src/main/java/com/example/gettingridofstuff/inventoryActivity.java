@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class inventoryActivity extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class inventoryActivity extends AppCompatActivity {
     private AlertDialog.Builder popupBuilder;
     private AlertDialog popup;
     private Button addItemButton;
+    private Button cancelAddButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,17 @@ public class inventoryActivity extends AppCompatActivity {
         final View itemPopupView = getLayoutInflater().inflate(R.layout.inventory_popup, null);
 
         //grab fields here
+        cancelAddButton = itemPopupView.findViewById(R.id.btn_inventory_cancel);
+        Spinner categorySpinner = itemPopupView.findViewById(R.id.category_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.category_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(adapter);
+
+        cancelAddButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                popup.dismiss();
+            }
+        });
 
         popupBuilder.setView(itemPopupView);
         popup = popupBuilder.create();
@@ -50,7 +64,7 @@ public class inventoryActivity extends AppCompatActivity {
     public void home(View view){
         this.finish();
         //animation should come from right to left because inventory is farthest right
-        //overridePendingTransition(to left enter, to left exit);
+        overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
 
 
     }
@@ -60,7 +74,7 @@ public class inventoryActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, activity_organization.class);
         this.startActivity(myIntent);
         //animation should come from right to left because inventory is farthest right
-        //overridePendingTransition(to left enter, to left exit);
+        overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
     }
 
     public void inventory(View view){
