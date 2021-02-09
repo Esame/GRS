@@ -64,7 +64,7 @@ public class inventoryActivity extends AppCompatActivity {
     public void home(View view){
         this.finish();
         //animation should come from right to left because inventory is farthest right
-        //overridePendingTransition(to left enter, to left exit);
+        overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
 
 
     }
@@ -74,7 +74,7 @@ public class inventoryActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, activity_organization.class);
         this.startActivity(myIntent);
         //animation should come from right to left because inventory is farthest right
-        //overridePendingTransition(to left enter, to left exit);
+        overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
     }
 
     public void inventory(View view){

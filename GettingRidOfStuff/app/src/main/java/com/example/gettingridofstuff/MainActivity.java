@@ -23,22 +23,19 @@ public class MainActivity extends AppCompatActivity {
     }
     public void home(View view){
         return;
-        //animation should come from right to left because inventory is farthest right
-        //overridePendingTransition(to left enter, to left exit);
-
 
     }
     public void organization(View view){
         Intent myIntent = new Intent(this, activity_organization.class);
         this.startActivity(myIntent);
         //animation should come from right to left because inventory is farthest right
-        //overridePendingTransition(to left enter, to left exit);
+        overridePendingTransition(R.anim.right_to_left, R.anim.right_to left);
     }
     public void inventory(View view){
         Intent myIntent = new Intent(this, inventoryActivity.class);
         this.startActivity(myIntent);
         //animation should come from left to right because organization is farthest right
-        //overridePendingTransition(to right enter,to right enter);
+        overridePendingTransition(R.anim.left_to_right,R.anim.left_to_right);
 
     }
     public void navigation(View v){
