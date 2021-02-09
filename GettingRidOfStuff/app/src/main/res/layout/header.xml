@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Header appears on every page and acts as a menu between screens-->
+<!--Linear layout to hold header and contain all widgets below-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70sp"

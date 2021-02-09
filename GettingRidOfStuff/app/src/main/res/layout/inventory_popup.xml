@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--inventory_popup is a popup page where the user can enter data about their inventory-->
+<!--Relative layout constrain all widgets-->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
