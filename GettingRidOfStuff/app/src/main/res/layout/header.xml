@@ -10,7 +10,7 @@
         android:id="@+id/inventorybutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
+        android:layout_margin="5sp"
         android:text="Inventory"
         android:textSize="13sp"
         android:onClick="gotoInventory"/>
@@ -19,7 +19,7 @@
         android:id="@+id/homebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
+        android:layout_margin="5sp"
         android:text="Home"
         android:textSize="13sp"
         android:onClick="gotoHome"/>
@@ -28,7 +28,7 @@
         android:id="@+id/organizationbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
+        android:layout_margin="5sp"
         android:text="Organizations"
         android:textSize="13sp"
         android:onClick="gotoOrganization"/>
