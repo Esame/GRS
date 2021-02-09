@@ -13,13 +13,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        activity_organization.ButtonHandler bh = new activity_organization.ButtonHandler();
+        ButtonHandler bh = new ButtonHandler();
         Button home_button = (Button) findViewById(R.id.homebutton);
-        homebutton.setOnClickListener(bh);
+        home_button.setOnClickListener(bh);
         Button organization_button = (Button) findViewById(R.id.organizationbutton);
-        organizationbutton.setOnClickListener(bh);
+        organization_button.setOnClickListener(bh);
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
-        inventorybutton.setOnClickListener(bh);
+        inventory_button.setOnClickListener(bh);
     }
     public void home(View view){
         return;
@@ -54,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
 
         public void onClick(View v){
             int buttonClicked = v.getId();
-            if(buttonClicked == findViewById(R.id.homebutton)){
+            if(buttonClicked == R.id.homebutton){
                 home(v);
             }
-            else if(buttonClicked == findViewById(R.id.organizationbutton)){
+            else if(buttonClicked == R.id.organizationbutton){
                 organization(v);
             }
-            else if(buttonClicked == findViewById(R.id.inventorybutton)){
+            else if(buttonClicked == R.id.inventorybutton){
                 inventory(v);
             }
 
