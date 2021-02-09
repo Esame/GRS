@@ -6,50 +6,50 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class activity_organization extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        activity_organization.ButtonHandler bh = new activity_organization.ButtonHandler();
+        setContentView(R.layout.organization);
+        ButtonHandler bh = new ButtonHandler();
         Button home_button = (Button) findViewById(R.id.homebutton);
         homebutton.setOnClickListener(bh);
         Button organization_button = (Button) findViewById(R.id.organizationbutton);
         organizationbutton.setOnClickListener(bh);
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventorybutton.setOnClickListener(bh);
+
     }
+
     public void home(View view){
-        return;
-        //animation should come from right to left because inventory is farthest right
-        //overridePendingTransition(to left enter, to left exit);
+        this.finish();
 
+        //animation should come from left to right because organization is farthest right
+        //overridePendingTransition(to right enter,to right enter);
 
     }
+
     public void organization(View view){
-        Intent myIntent = new Intent(this, activity_organization.class);
-        this.startActivity(myIntent);
-        //animation should come from right to left because inventory is farthest right
-        //overridePendingTransition(to left enter, to left exit);
+        return;
+        //do nothing because we are on that activity
+
+
     }
+
     public void inventory(View view){
+        this.finish();
         Intent myIntent = new Intent(this, inventoryActivity.class);
         this.startActivity(myIntent);
         //animation should come from left to right because organization is farthest right
         //overridePendingTransition(to right enter,to right enter);
 
-    }
-    public void navigation(View v){
 
     }
-    public void search(View v){
 
-    }
-    public void filter(View v){
-
-    }
     private class ButtonHandler implements View.OnClickListener{
 
         public void onClick(View v){
@@ -66,5 +66,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
 }
