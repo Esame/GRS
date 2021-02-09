@@ -6,9 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
+/*activity_organization handles all actions in organizations.xml*/
 public class activity_organization extends AppCompatActivity {
 
     @Override
@@ -25,21 +24,20 @@ public class activity_organization extends AppCompatActivity {
 
     }
 
+    /*home onClick function should finish the current view and go back to the home screen*/
     public void home(View view){
         this.finish();
-
         //animation should come from left to right because organization is farthest right
         overridePendingTransition(R.anim.left_to_right,R.anim.left_to_right);
 
     }
 
+    /*organization onClick function should do nothing*/
     public void organization(View view){
         return;
-        //do nothing because we are on that activity
-
-
     }
 
+    /*inventory onClick function should make the inventory_activity the current view*/
     public void inventory(View view){
         this.finish();
         Intent myIntent = new Intent(this, inventoryActivity.class);
@@ -50,6 +48,7 @@ public class activity_organization extends AppCompatActivity {
 
     }
 
+    /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
     private class ButtonHandler implements View.OnClickListener{
 
         public void onClick(View v){

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+/*inventoryActivity handles all actions in the activity_inventory.xml*/
 public class inventoryActivity extends AppCompatActivity {
 
     private AlertDialog.Builder popupBuilder;
@@ -36,6 +37,7 @@ public class inventoryActivity extends AppCompatActivity {
         });
     }
 
+    /*Create popup will bring up inventor_popup upon a button click*/
     public void createPopup(){
         popupBuilder = new AlertDialog.Builder(this);
         final View itemPopupView = getLayoutInflater().inflate(R.layout.inventory_popup, null);
@@ -47,14 +49,14 @@ public class inventoryActivity extends AppCompatActivity {
         popup.show();
     }
 
+    /*home onclick function should display the home screen view*/
     public void home(View view){
         this.finish();
         //animation should come from right to left because inventory is farthest right
         overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
-
-
     }
 
+    /*organization onClick function should make the activity_organization the current view*/
     public void organization(View view){
         this.finish();
         Intent myIntent = new Intent(this, activity_organization.class);
@@ -63,12 +65,14 @@ public class inventoryActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
     }
 
+    /*inventory onClick function should do nothin*/
     public void inventory(View view){
         //should do nothing because it is the current screen
         return;
     }
-    private class ButtonHandler implements View.OnClickListener{
 
+    /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
+    private class ButtonHandler implements View.OnClickListener{
         public void onClick(View v){
             int buttonClicked = v.getId();
             if(buttonClicked == R.id.homebutton){
