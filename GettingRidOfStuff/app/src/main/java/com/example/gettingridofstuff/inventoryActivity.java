@@ -24,11 +24,9 @@ public class inventoryActivity extends AppCompatActivity {
 
     }
     public void home(View view){
-        this.finish();
+        return;
         //animation should come from right to left because inventory is farthest right
         //overridePendingTransition(to left enter, to left exit);
-
-
     }
 
     public void organization(View view){
@@ -40,8 +38,11 @@ public class inventoryActivity extends AppCompatActivity {
     }
 
     public void inventory(View view){
-        //should do nothing because it is the current screen
-        return;
+        this.finish();
+        Intent myIntent = new Intent(this, inventoryActivity.class);
+        this.startActivity(myIntent);
+        //animation should come from left to right because organization is farthest right
+        //overridePendingTransition(to right enter,to right enter);
     }
     private class ButtonHandler implements View.OnClickListener{
 
