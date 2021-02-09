@@ -50,7 +50,7 @@ public class inventoryActivity extends AppCompatActivity {
             if(buttonClicked == findViewById(R.id.homebutton)){
                 home(v);
             }
-            else if(buttonClicked == findViewById(R.id.organization)){
+            else if(buttonClicked == findViewById(R.id.organizationbutton)){
                 organization(v);
             }
             else if(buttonClicked == findViewById(R.id.inventorybutton)){
