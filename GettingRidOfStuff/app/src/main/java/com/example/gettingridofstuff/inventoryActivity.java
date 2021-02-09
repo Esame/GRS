@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-public class activity_inventory extends AppCompatActivity {
+public class inventoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +15,7 @@ public class activity_inventory extends AppCompatActivity {
         setContentView(R.layout.activity_inventory);
     }
     public void home(View view){
+
 
     }
 
