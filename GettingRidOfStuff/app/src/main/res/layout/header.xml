@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--Header appears on every page and acts as a menu between screens-->
+<!--Linear layout to hold header and contain all widgets below-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70sp"
+    android:orientation="horizontal"
     android:id="@+id/header"
     android:background="@color/header">
 
     <Button
-        android:id="@+id/btn_inventory_route"
+        android:id="@+id/inventorybutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10sp"
-        android:text="@string/str_menu_button"
-        android:textSize="15sp" />
+        android:layout_margin="5sp"
+        android:text="Inventory"
+        android:textSize="13sp"
+        android:onClick="gotoInventory"/>
 
-    <TextView
-        android:id="@+id/txtHeading"
-        android:layout_width="fill_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:gravity="center"
-        android:text="@string/str_header_title"
-        android:textSize="35sp"
-        />
-</RelativeLayout>
+    <Button
+        android:id="@+id/homebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:text="Home"
+        android:textSize="13sp"
+        android:onClick="gotoHome"/>
+
+    <Button
+        android:id="@+id/organizationbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:text="Organizations"
+        android:textSize="13sp"
+        android:onClick="gotoOrganization"/>
+
+</LinearLayout>

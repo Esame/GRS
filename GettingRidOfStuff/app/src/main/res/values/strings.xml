@@ -8,4 +8,12 @@
     <string name="go">go</string>
     <string name="filter">Filter</string>
     <string name="sample_charity">Sample Charity <br/> sample description</string>
+    <string-array name="category_array">
+        <item>Food</item>
+        <item>Clothing</item>
+        <item>Furniture</item>
+        <item>Kitchen Utensils</item>
+        <item>Books</item>
+        <item>Electronics</item>
+    </string-array>
 </resources>

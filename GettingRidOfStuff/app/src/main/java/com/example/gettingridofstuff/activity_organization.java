@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-/*MainActivity handles all actions in activity_main.xml*/
-public class MainActivity extends AppCompatActivity {
+/*activity_organization handles all actions in organizations.xml*/
+public class activity_organization extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.organization);
         ButtonHandler bh = new ButtonHandler();
         Button home_button = (Button) findViewById(R.id.homebutton);
         home_button.setOnClickListener(bh);
@@ -21,36 +21,30 @@ public class MainActivity extends AppCompatActivity {
         organization_button.setOnClickListener(bh);
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventory_button.setOnClickListener(bh);
+
     }
-    /*home onclick function should do nothing*/
+
+    /*home onClick function should finish the current view and go back to the home screen*/
     public void home(View view){
+        this.finish();
+        //animation should come from left to right because organization is farthest right
+        overridePendingTransition(R.anim.left_to_right,R.anim.left_to_right);
+
+    }
+
+    /*organization onClick function should do nothing*/
+    public void organization(View view){
         return;
     }
-    /*organization onClick function should make the activity_organization the current view*/
-    public void organization(View view){
-        Intent myIntent = new Intent(this, activity_organization.class);
-        this.startActivity(myIntent);
-        //animation should come from right to left because inventory is farthest right
-        overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
-    }
+
     /*inventory onClick function should make the inventory_activity the current view*/
     public void inventory(View view){
+        this.finish();
         Intent myIntent = new Intent(this, inventoryActivity.class);
         this.startActivity(myIntent);
         //animation should come from left to right because organization is farthest right
         overridePendingTransition(R.anim.left_to_right,R.anim.left_to_right);
 
-    }
-    /*onClick for nav button unimplemented*/
-    public void navigation(View v){
-
-    }
-    /*onClick for search button unimplemented*/
-    public void search(View v){
-
-    }
-    /*onClick for filter button unimplemented*/
-    public void filter(View v){
 
     }
 
@@ -71,5 +65,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
 }

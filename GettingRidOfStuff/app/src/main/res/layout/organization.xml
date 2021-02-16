@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--organizations will display all the charities near the user on a map-->
+<!--Linear layout to hold header at the top and other widgets below-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,7 +30,6 @@
         android:src="@drawable/bellingham"/>
 
     <Button
-
         android:id="@+id/button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
