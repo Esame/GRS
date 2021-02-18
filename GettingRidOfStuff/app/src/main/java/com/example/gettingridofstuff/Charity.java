@@ -6,11 +6,11 @@ public class Charity {
     String id;
     String category;
 
-    public void Charity(){
-        String name = null;
-        String hours = null;
-        String id = null;
-        String category = null;
+    public Charity(String cname, String chours, String cid, String ccategory){
+        setName(cname);
+        setId(cid);
+        setCategory(ccategory);
+        setHours(chours);
     }
 
     public String getCategory() {
