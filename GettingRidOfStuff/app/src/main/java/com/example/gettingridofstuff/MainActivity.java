@@ -9,7 +9,7 @@ import android.widget.Button;
 
 /*MainActivity handles all actions in activity_main.xml*/
 public class MainActivity extends AppCompatActivity {
-
+    static DatabaseManager db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
         organization_button.setOnClickListener(bh);
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventory_button.setOnClickListener(bh);
+
+        //Create static donation center database when app is first opened
+        charityDatabase();
+
     }
     /*home onclick function should do nothing*/
     public void home(View view){
@@ -53,19 +57,22 @@ public class MainActivity extends AppCompatActivity {
     public void filter(View v){
 
     }
+    public void charityDatabase(){
+        db = new DatabaseManager(this);
+        //for each charity location, insert into database
 
+
+    }
     /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
-    private class ButtonHandler implements View.OnClickListener{
+    private class ButtonHandler implements View.OnClickListener {
 
-        public void onClick(View v){
+        public void onClick(View v) {
             int buttonClicked = v.getId();
-            if(buttonClicked == R.id.homebutton){
+            if (buttonClicked == R.id.homebutton) {
                 home(v);
-            }
-            else if(buttonClicked == R.id.organizationbutton){
+            } else if (buttonClicked == R.id.organizationbutton) {
                 organization(v);
-            }
-            else if(buttonClicked == R.id.inventorybutton){
+            } else if (buttonClicked == R.id.inventorybutton) {
                 inventory(v);
             }
 
