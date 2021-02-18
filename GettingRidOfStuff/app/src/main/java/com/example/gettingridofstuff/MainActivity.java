@@ -60,8 +60,24 @@ public class MainActivity extends AppCompatActivity {
     public void charityDatabase(){
         db = new DatabaseManager(this);
         //for each charity location, insert into database
+        //name,hours,id,category,address
+        Charity charity1 = new Charity("Goodwill Bellingham" , "10am - 8pm everyday" , "0", "Clothing, Homegoods, Food, Electronics", "1115 E Sunset Dr, Bellingham, WA 98226");
+        Charity charity2 = new Charity("Lighthouse Mission Ministries", "9am-4pm Mon - Fri", "0", "Clothing, Homegoods, Food, Electronics", "910 W Holly St Bellingham, WA 98225");
+        Charity charity3 = new Charity("Ragfinery", "10am - 5pm Fri - Sun", "0", "Clothing", "1421 N Forest St, Bellingham, WA 98225" );
+        Charity charity4 = new Charity("Wise Buys Thrift Store", "Closed for COVID", "0", "Clothing, Homegoods, Electronic", "1224 N State St, Bellingham, WA 98225");
+        Charity charity5 = new Charity("Assistance League of Bellingham, Thrift & Gift Shop", "Closed for COVID", "0", "Clothes, Homegoods", "2817 Meridian Street, Bellingham, WA 98225");
+        Charity charity6 = new Charity("Bellingham Food Bank", "3pm - 6pm Wed, 1pm - 4pm Tues and Fri", "0", "Food", "1824 Ellis St, Bellingham, WA 98225");
+        Charity charity7 = new Charity("Worn Again Thrift", "11am - 6pm Tues - Sun", "0", "Clothing", "232 E Champion St, Bellingham, WA 98225");
+        Charity charity8 = new Charity("The RE Store", "11am - 5pm, Tues - Sat", "0", "Tools, Building materials, House care supplies", "2309 Meridian Street, Bellingham, WA 98225");
 
-
+        db.insert(charity1);
+        db.insert(charity2);
+        db.insert(charity3);
+        db.insert(charity4);
+        db.insert(charity5);
+        db.insert(charity6);
+        db.insert(charity7);
+        db.insert(charity8);
     }
     /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
     private class ButtonHandler implements View.OnClickListener {
