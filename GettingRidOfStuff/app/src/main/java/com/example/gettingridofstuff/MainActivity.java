@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         inventory_button.setOnClickListener(bh);
 
         //Create static donation center database when app is first opened
-        charityDatabase();
+        //charityDatabase();
 
     }
     /*home onclick function should do nothing*/
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public void filter(View v){
 
     }
+    /*charityDatabase function manually placed Bellingham donation centers into a database */
     public void charityDatabase(){
         db = new DatabaseManager(this);
         //for each charity location, insert into database

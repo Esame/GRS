@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+/*DatabaseManager class contains fields and methods that control a database of donation centers */
 public class DatabaseManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "donationDB";
     private static final int DATABASE_VERSION = 1;
@@ -21,6 +22,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         super( context, DATABASE_NAME, null, DATABASE_VERSION );
     }
 
+    /*Initializes our database */
     public void onCreate( SQLiteDatabase db ) {
         // build sql create statement
         //Fix create table query
@@ -34,6 +36,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL( sqlCreate );
     }
 
+    /*Updates our database table, currently do not need to use */
     public void onUpgrade( SQLiteDatabase db,
                            int oldVersion, int newVersion ) {
         // Drop old table if it exists
@@ -42,6 +45,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate( db );
     }
 
+    /*Insert adds a donation center into the database */
     public void insert( Charity charity ) {
         SQLiteDatabase db = this.getWritableDatabase( );
         String sqlInsert = "insert into " + TABLE_DONATION;
@@ -56,6 +60,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
 
+    /*selectAll returns all the Charity items currently in our database */
     public ArrayList<Charity> selectAll( ) {
         String sqlQuery = "select * from " + TABLE_DONATION;
 

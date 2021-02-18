@@ -1,5 +1,6 @@
 package com.example.gettingridofstuff;
 
+/*Charity class creates charity object containing necessary information about a donation center */
 public class Charity {
     String name;
     String hours;
