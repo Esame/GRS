@@ -5,12 +5,14 @@ public class Charity {
     String hours;
     String id;
     String category;
+    String address;
 
-    public Charity(String cname, String chours, String cid, String ccategory){
+    public Charity(String cname, String chours, String cid, String ccategory, String caddress){
         setName(cname);
         setId(cid);
         setCategory(ccategory);
         setHours(chours);
+        setAddress(caddress);
     }
 
     public String getCategory() {
@@ -29,6 +31,10 @@ public class Charity {
         return name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public void setCategory(String category) {
         this.category = category;
     }
@@ -45,4 +51,7 @@ public class Charity {
         this.name = name;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
