@@ -24,12 +24,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onCreate( SQLiteDatabase db ) {
         // build sql create statement
         //Fix create table query
-        String sqlCreate = "create table " + TABLE_DONATION + "( v";
-        sqlCreate +=  ID + "varchar(50) NOT NULL,";
-        sqlCreate +=  NAME + "varchar(50) NOT NULL";
-        sqlCreate +=    HOURS + "varchar(50) NOT NULL";
-        sqlCreate +=  CATEGORY + "varchar(50) NOT NULL";
-        sqlCreate +=  ADDRESS + "varchar(100) ";
+        String sqlCreate = "create table " + TABLE_DONATION + "( ";
+        sqlCreate +=  ID + "integer primary key autoincrement, ";
+        sqlCreate +=  NAME + "text, ";
+        sqlCreate +=    HOURS + "text, ";
+        sqlCreate +=  CATEGORY + "text, ";
+        sqlCreate +=  ADDRESS + "text )";
 
         db.execSQL( sqlCreate );
     }
@@ -66,7 +66,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         while( cursor.moveToNext( ) ) {
             Charity currentCharity
                     = new Charity(cursor.getString( 0 ),
-                    cursor.getString( 1 ), cursor.getString( 2 ), cursor.getString(3) );
+                    cursor.getString( 1 ), cursor.getString( 2 ), cursor.getString(3),cursor.getString(4) );
             charities.add( currentCharity );
         }
         db.close( );
