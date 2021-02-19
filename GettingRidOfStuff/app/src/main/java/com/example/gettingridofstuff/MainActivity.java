@@ -1,15 +1,27 @@
 package com.example.gettingridofstuff;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-
 /*MainActivity handles all actions in activity_main.xml*/
 public class MainActivity extends AppCompatActivity {
     static DatabaseManager db;
+    private AlertDialog.Builder popupBuilder;
+    private AlertDialog popup;
+    private boolean clothes = false;
+    private boolean food = false;
+    private boolean homeGoods = false;
+    private boolean electronics = false;
+    private boolean tools = false;
+    private boolean vehicles = false;
+    private boolean building = false;
+    private boolean houseCare = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         inventory_button.setOnClickListener(bh);
 
         //Create static donation center database when app is first opened
-        //charityDatabase();
+
 
     }
     /*home onclick function should do nothing*/
@@ -36,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(myIntent);
         //animation should come from right to left because inventory is farthest right
         overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
+
     }
     /*inventory onClick function should make the inventory_activity the current view*/
     public void inventory(View view){
@@ -54,8 +67,121 @@ public class MainActivity extends AppCompatActivity {
 
     }
     /*onClick for filter button unimplemented*/
-    public void filter(View v){
+    /*public void filter(View v){
 
+    }*/
+    public void filter(View v){
+        popupBuilder = new AlertDialog.Builder(this);
+        final View filterPopupView = getLayoutInflater().inflate(R.layout.filter_popup, null);
+
+        Button clothes_btn = filterPopupView.findViewById(R.id.clothes_btn);
+        clothes_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                if(clothes){
+                    clothes = false;
+                }else {
+                    clothes = true;
+                }
+            }
+
+        });
+        Button food_btn = filterPopupView.findViewById(R.id.food_btn);
+        food_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                if(food){
+                    food = false;
+                }
+                else {
+                    food = true;
+                }
+            }
+        });
+        Button homeGoods_btn = filterPopupView.findViewById(R.id.home_goods_btn);
+        homeGoods_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                if(homeGoods){
+                    homeGoods = false;
+                }
+                else {
+                    homeGoods = true;
+                }
+            }
+        });
+        Button electronics_btn = filterPopupView.findViewById(R.id.electronics_btn);
+        electronics_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                if(electronics){
+                    electronics = false;
+                }
+                else {
+                    electronics = true;
+                }
+            }
+        });Button tools_btn = filterPopupView.findViewById(R.id.tools_btn);
+        tools_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                if(tools){
+                    tools = false;
+                }
+                else {
+                    tools = true;
+                }
+            }
+        });Button vehicle_btn = filterPopupView.findViewById(R.id.vehicles_btn);
+        vehicle_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                if(vehicles){
+                    vehicles = false;
+                }
+                else {
+                    vehicles = true;
+                }
+            }
+        });Button building_btn = filterPopupView.findViewById(R.id.building_btn);
+        building_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                if(building){
+                    building = false;
+                }
+                else {
+                    building = true;
+                }
+            }
+        });Button houseCare_btn = filterPopupView.findViewById(R.id.house_care_btn);
+        houseCare_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                if(houseCare){
+                    houseCare = false;
+                }
+                else {
+                    houseCare = true;
+                }
+            }
+        });
+        Button cancel_btn = filterPopupView.findViewById(R.id.cancel);
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                clothes = false;
+                food = false;
+                homeGoods = false;
+                electronics = false;
+                tools = false;
+                vehicles = false;
+                building = false;
+                houseCare = false;
+                popup.dismiss();
+            }
+        });
+        Button confirm_btn = filterPopupView.findViewById(R.id.confirm);
+        confirm_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                popup.dismiss();
+            }
+        });
+
+        popupBuilder.setView(filterPopupView);
+        popup = popupBuilder.create();
+        popup.show();
     }
     /*charityDatabase function manually placed Bellingham donation centers into a database */
     public void charityDatabase(){
