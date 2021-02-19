@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
         inventory_button.setOnClickListener(bh);
 
         //Create static donation center database when app is first opened
-
+        //charityDatabase();
 
     }
-   /* protected void onStart(){
+   protected void onStart(){
         super.onStart();
         charityDatabase();
-    }*/
+    }
 
     /*home onclick function should do nothing*/
     public void home(View view){
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public void organization(View view){
         Intent myIntent = new Intent(this, activity_organization.class);
         this.startActivity(myIntent);
-        //charityDatabase();
+
         //animation should come from right to left because inventory is farthest right
         overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
 

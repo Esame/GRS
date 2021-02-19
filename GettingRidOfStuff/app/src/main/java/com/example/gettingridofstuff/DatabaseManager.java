@@ -29,13 +29,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
         // build sql create statement
         //Fix create table query
         String sqlCreate = "create table " + TABLE_DONATION + "( ";
-        sqlCreate +=  ID + "integer primary key autoincrement, ";
-        sqlCreate +=  NAME + "text, ";
-        sqlCreate +=    HOURS + "text, ";
-        sqlCreate +=  CATEGORY + "text, ";
-        sqlCreate +=  ADDRESS + "text, ";
-        sqlCreate +=  LONGITUDE + "double, ";
-        sqlCreate +=  LATITUDE + "double )";
+        sqlCreate +=  ID + " integer primary key autoincrement, ";
+        sqlCreate +=  NAME + " text, ";
+        sqlCreate +=    HOURS + " text, ";
+        sqlCreate +=  CATEGORY + " text, ";
+        sqlCreate +=  ADDRESS + " text, ";
+        sqlCreate +=  LONGITUDE + " double, ";
+        sqlCreate +=  LATITUDE + " double )";
 
         db.execSQL( sqlCreate );
     }
@@ -53,13 +53,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void insert( Charity charity ) {
         SQLiteDatabase db = this.getWritableDatabase( );
         String sqlInsert = "insert into " + TABLE_DONATION;
-        sqlInsert += " values(" + charity.getId() + "', '";
-        sqlInsert += charity.getName( ) + "', '";
-        sqlInsert += charity.getHours( ) + "', '";
-        sqlInsert += "', '" + charity.getCategory( ) + "' ";
-        sqlInsert += "', '" + charity.getAddress( ) + "' ";
-        sqlInsert += "', '" + charity.getLongitude( ) + "' ";
-        sqlInsert += "', '" + charity.getLatitude( ) + "' )";
+        sqlInsert += " values( " + charity.getId() + ", ' ";
+        sqlInsert += charity.getName( ) + "', ' ";
+        sqlInsert += charity.getHours( ) + "', ' ";
+        sqlInsert += charity.getCategory( ) + "', ' ";
+        sqlInsert += charity.getAddress( ) + "', ' ";
+        sqlInsert += charity.getLongitude( ) + "', ' ";
+        sqlInsert += charity.getLatitude( ) + "' )";
 
         db.execSQL( sqlInsert );
         db.close( );
