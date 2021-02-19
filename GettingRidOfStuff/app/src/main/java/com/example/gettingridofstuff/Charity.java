@@ -7,10 +7,10 @@ public class Charity {
     int id;
     String category;
     String address;
-    int latitude;
-    int longitude;
+    float latitude;
+    float longitude;
 
-    public Charity(String cname, String chours, int cid, String ccategory, String caddress, int latitude, int longitude){
+    public Charity(String cname, String chours, int cid, String ccategory, String caddress, float latitude, float longitude){
         setName(cname);
         setId(cid);
         setCategory(ccategory);
@@ -40,11 +40,11 @@ public class Charity {
         return address;
     }
 
-    public int getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 
-    public int getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
 
@@ -68,11 +68,11 @@ public class Charity {
         this.address = address;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 
-    public void setLongitude(int longitude) {
+    public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
 }
