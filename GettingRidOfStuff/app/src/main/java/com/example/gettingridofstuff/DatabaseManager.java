@@ -53,7 +53,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void insert( Charity charity ) {
         SQLiteDatabase db = this.getWritableDatabase( );
         String sqlInsert = "insert into " + TABLE_DONATION;
-        sqlInsert += " values( " + charity.getId() + ", ' ";
+        sqlInsert += " values( null, ' ";
         sqlInsert += charity.getName( ) + "', ' ";
         sqlInsert += charity.getHours( ) + "', ' ";
         sqlInsert += charity.getCategory( ) + "', ' ";
