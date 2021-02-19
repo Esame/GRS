@@ -194,14 +194,14 @@ public class MainActivity extends AppCompatActivity {
         db = new DatabaseManager(this);
         //for each charity location, insert into database
         //name,hours,id,category,address
-        Charity charity1 = new Charity("Goodwill Bellingham" , "10am - 8pm everyday" , 0, "Clothing, Homegoods, Food, Electronics", "1115 E Sunset Dr, Bellingham, WA 98226");
-        Charity charity2 = new Charity("Lighthouse Mission Ministries", "9am-4pm Mon - Fri", 0, "Clothing, Homegoods, Food, Electronics", "910 W Holly St Bellingham, WA 98225");
-        Charity charity3 = new Charity("Ragfinery", "10am - 5pm Fri - Sun", 0, "Clothing", "1421 N Forest St, Bellingham, WA 98225" );
-        Charity charity4 = new Charity("Wise Buys Thrift Store", "Closed for COVID", 0, "Clothing, Homegoods, Electronic", "1224 N State St, Bellingham, WA 98225");
-        Charity charity5 = new Charity("Assistance League of Bellingham, Thrift & Gift Shop", "Closed for COVID", 0, "Clothes, Homegoods", "2817 Meridian Street, Bellingham, WA 98225");
-        Charity charity6 = new Charity("Bellingham Food Bank", "3pm - 6pm Wed, 1pm - 4pm Tues and Fri", 0, "Food", "1824 Ellis St, Bellingham, WA 98225");
-        Charity charity7 = new Charity("Worn Again Thrift", "11am - 6pm Tues - Sun", 0, "Clothing", "232 E Champion St, Bellingham, WA 98225");
-        Charity charity8 = new Charity("The RE Store", "11am - 5pm, Tues - Sat", 0, "Tools, Building materials, House care supplies", "2309 Meridian Street, Bellingham, WA 98225");
+        Charity charity1 = new Charity("Goodwill Bellingham" , "10am - 8pm everyday" , 0, "Clothing, Homegoods, Food, Electronics", "1115 E Sunset Dr, Bellingham, WA 98226", 48.771930, -122.461120);
+        Charity charity2 = new Charity("Lighthouse Mission Ministries", "9am-4pm Mon - Fri", 0, "Clothing, Homegoods, Food, Electronics", "910 W Holly St Bellingham, WA 98225", 48.755060,-122.487250 );
+        Charity charity3 = new Charity("Ragfinery", "10am - 5pm Fri - Sun", 0, "Clothing", "1421 N Forest St, Bellingham, WA 98225",48.749620, -122.473870 );
+        Charity charity4 = new Charity("Wise Buys Thrift Store", "Closed for COVID", 0, "Clothing, Homegoods, Electronic", "1224 N State St, Bellingham, WA 98225", 48.747920, -122.477760);
+        Charity charity5 = new Charity("Assistance League of Bellingham, Thrift & Gift Shop", "Closed for COVID", 0, "Clothes, Homegoods", "2817 Meridian Street, Bellingham, WA 98225", 48.739123199999995, -122.4802304);
+        Charity charity6 = new Charity("Bellingham Food Bank", "3pm - 6pm Wed, 1pm - 4pm Tues and Fri", 0, "Food", "1824 Ellis St, Bellingham, WA 98225", 48.754700, -122.471770);
+        Charity charity7 = new Charity("Worn Again Thrift", "11am - 6pm Tues - Sun", 0, "Clothing", "232 E Champion St, Bellingham, WA 98225",48.7504438, -122.4744212 );
+        Charity charity8 = new Charity("The RE Store", "11am - 5pm, Tues - Sat", 0, "Tools, Building materials, House care supplies", "2309 Meridian Street, Bellingham, WA 98225", 48.761594, -122.48646);
         Charity charity9 = new Charity("We Care of Whatcom County", "10am-3pm Sat - Tues", 0, "Clothing",  "3550 Meridian St Ste 2, Bellingham, WA 98225");
         Charity charity10 = new Charity("C4PIN\n" + "(Computers for people in need)", "9am-1pm Mon - Fri", 0, "Electronics", "2004 James St, Bellingham, WA 98225");
         Charity charity11 = new Charity("Value Village"," 11am - 7pm everyday",0, "Clothing, Homegoods, Electronics", "150 E Bellis Fair Pkwy, Bellingham, WA 98226");
