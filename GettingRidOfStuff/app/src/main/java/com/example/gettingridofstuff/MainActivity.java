@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         inventory_button.setOnClickListener(bh);
 
         //Create static donation center database when app is first opened
-
+        //charityDatabase();
 
     }
    /* protected void onStart(){
