@@ -34,8 +34,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqlCreate +=    HOURS + "text, ";
         sqlCreate +=  CATEGORY + "text, ";
         sqlCreate +=  ADDRESS + "text, ";
-        sqlCreate +=  LONGITUDE + "float, ";
-        sqlCreate +=  LATITUDE + "float )";
+        sqlCreate +=  LONGITUDE + "double, ";
+        sqlCreate +=  LATITUDE + "double )";
 
         db.execSQL( sqlCreate );
     }
@@ -77,7 +77,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         while( cursor.moveToNext( ) ) {
             Charity currentCharity
                     = new Charity(cursor.getString( 0 ),
-                    cursor.getString( 1 ), cursor.getInt( 2 ), cursor.getString(3),cursor.getString(4), cursor.getInt(5), cursor.getInt(6));
+                    cursor.getString( 1 ), cursor.getInt( 2 ), cursor.getString(3),cursor.getString(4), cursor.getDouble(5), cursor.getDouble(6));
             charities.add( currentCharity );
         }
         db.close( );
