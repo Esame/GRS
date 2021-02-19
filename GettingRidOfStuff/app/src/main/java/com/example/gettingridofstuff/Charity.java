@@ -4,11 +4,11 @@ package com.example.gettingridofstuff;
 public class Charity {
     String name;
     String hours;
-    String id;
+    int id;
     String category;
     String address;
 
-    public Charity(String cname, String chours, String cid, String ccategory, String caddress){
+    public Charity(String cname, String chours, int cid, String ccategory, String caddress){
         setName(cname);
         setId(cid);
         setCategory(ccategory);
@@ -24,7 +24,7 @@ public class Charity {
         return hours;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -44,7 +44,7 @@ public class Charity {
         this.hours = hours;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
