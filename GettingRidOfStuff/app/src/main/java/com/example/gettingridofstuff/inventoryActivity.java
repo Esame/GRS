@@ -11,6 +11,8 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Map;
+
 /*inventoryActivity handles all actions in the activity_inventory.xml*/
 public class inventoryActivity extends AppCompatActivity {
 
@@ -84,6 +86,7 @@ public class inventoryActivity extends AppCompatActivity {
         //should do nothing because it is the current screen
         return;
     }
+
 
     /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
     private class ButtonHandler implements View.OnClickListener{

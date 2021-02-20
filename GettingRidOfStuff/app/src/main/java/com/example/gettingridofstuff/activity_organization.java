@@ -48,6 +48,12 @@ public class activity_organization extends AppCompatActivity {
 
     }
 
+    public void realMapView(View view){
+        this.finish();
+        Intent myIntent = new Intent(this, MapsActivity.class);
+        this.startActivity(myIntent);
+    }
+
     /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
     private class ButtonHandler implements View.OnClickListener{
 

@@ -76,8 +76,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         ArrayList<Charity> charities = new ArrayList<Charity>( );
         while( cursor.moveToNext( ) ) {
             Charity currentCharity
-                    = new Charity(cursor.getString( 0 ),
-                    cursor.getString( 1 ), cursor.getInt( 2 ), cursor.getString(3),cursor.getString(4), cursor.getDouble(5), cursor.getDouble(6));
+                    = new Charity(cursor.getString( 1 ),
+                    cursor.getString( 2 ), cursor.getInt( 0 ), cursor.getString(3),cursor.getString(4), cursor.getDouble(6), cursor.getDouble(5));
             charities.add( currentCharity );
         }
         db.close( );
