@@ -2,16 +2,22 @@ package com.example.gettingridofstuff;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RatingBar;
+import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /*inventoryActivity handles all actions in the activity_inventory.xml*/
 public class inventoryActivity extends AppCompatActivity {
@@ -19,12 +25,19 @@ public class inventoryActivity extends AppCompatActivity {
     private AlertDialog.Builder popupBuilder;
     private AlertDialog popup;
     private Button addItemButton;
-    private Button cancelAddButton;
+    private GridView itemGrid;
+    ArrayList<inventoryItem> itemList;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
+
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+
         ButtonHandler bh = new ButtonHandler();
         Button home_button = (Button) findViewById(R.id.homebutton);
         home_button.setOnClickListener(bh);
@@ -40,6 +53,41 @@ public class inventoryActivity extends AppCompatActivity {
                 createPopup();
             }
         });
+
+        //set up grid
+        itemGrid = findViewById(R.id.inventory_grid);
+
+        load();
+        itemGrid.setAdapter(new inventoryListAdapter(this, itemList));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        save();
+    }
+
+    //saves the inventory items to a string set in storedPreferences
+    private void save(){
+        Set<String> items = new HashSet<String>();
+        for(int i = 0; i < itemList.size(); i++){
+            items.add(itemList.get(i).saveString());
+        }
+        editor.putStringSet("INVENTORY", items);
+        editor.apply();
+    }
+
+    //loads the inventory items from a string set in storedPreferences
+    private void load(){
+        Set<String> items = sharedPref.getStringSet("INVENTORY", null);
+
+        itemList = new ArrayList<inventoryItem>();
+
+        if(items != null){
+            for(String save : items){
+                itemList.add(new inventoryItem(save));
+            }
+        }
     }
 
     /*Create popup will bring up inventor_popup upon a button click*/
@@ -48,14 +96,32 @@ public class inventoryActivity extends AppCompatActivity {
         final View itemPopupView = getLayoutInflater().inflate(R.layout.inventory_popup, null);
 
         //grab fields here
-        cancelAddButton = itemPopupView.findViewById(R.id.btn_inventory_cancel);
+        Button cancelAddButton = itemPopupView.findViewById(R.id.btn_inventory_cancel);
+        Button confirmAddButton = itemPopupView.findViewById(R.id.btn_inventory_add);
         Spinner categorySpinner = itemPopupView.findViewById(R.id.category_spinner);
+        EditText nameField = itemPopupView.findViewById(R.id.item_name_input);
+        EditText quantity = itemPopupView.findViewById(R.id.item_quantity_input);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.category_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
 
         cancelAddButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                popup.dismiss();
+            }
+        });
+
+        confirmAddButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                String name = nameField.getText().toString();
+                String quantityString = quantity.getText().toString();
+                if(name.matches("") || quantityString.matches("")) {
+                    //prompt valid input
+                }else {
+                    inventoryItem itm = new inventoryItem(name, categorySpinner.getSelectedItem().toString(), Integer.parseInt(quantityString));
+                    itemList.add(itm);
+                }
                 popup.dismiss();
             }
         });
