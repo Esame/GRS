@@ -17,6 +17,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String HOURS = "hours";
     private static final String CATEGORY = "category";
     private static final String ADDRESS = "address";
+    private static final String LONGITUDE = "longitude";
+    private static final String LATITUDE = "latitude";
 
     public DatabaseManager( Context context ) {
         super( context, DATABASE_NAME, null, DATABASE_VERSION );
@@ -27,11 +29,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
         // build sql create statement
         //Fix create table query
         String sqlCreate = "create table " + TABLE_DONATION + "( ";
-        sqlCreate +=  ID + "integer primary key autoincrement, ";
-        sqlCreate +=  NAME + "text, ";
-        sqlCreate +=    HOURS + "text, ";
-        sqlCreate +=  CATEGORY + "text, ";
-        sqlCreate +=  ADDRESS + "text )";
+        sqlCreate +=  ID + " integer primary key autoincrement, ";
+        sqlCreate +=  NAME + " text, ";
+        sqlCreate +=    HOURS + " text, ";
+        sqlCreate +=  CATEGORY + " text, ";
+        sqlCreate +=  ADDRESS + " text, ";
+        sqlCreate +=  LONGITUDE + " double, ";
+        sqlCreate +=  LATITUDE + " double )";
 
         db.execSQL( sqlCreate );
     }
@@ -49,11 +53,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void insert( Charity charity ) {
         SQLiteDatabase db = this.getWritableDatabase( );
         String sqlInsert = "insert into " + TABLE_DONATION;
-        sqlInsert += " values(" + charity.getId() + "', '";
-        sqlInsert += charity.getName( ) + "', '";
-        sqlInsert += charity.getHours( ) + "', '";
-        sqlInsert += "', '" + charity.getCategory( ) + "' ";
-        sqlInsert += "', '" + charity.getAddress( ) + "' )";
+        sqlInsert += " values( null, ' ";
+        sqlInsert += charity.getName( ) + "', ' ";
+        sqlInsert += charity.getHours( ) + "', ' ";
+        sqlInsert += charity.getCategory( ) + "', ' ";
+        sqlInsert += charity.getAddress( ) + "', ' ";
+        sqlInsert += charity.getLongitude( ) + "', ' ";
+        sqlInsert += charity.getLatitude( ) + "' )";
 
         db.execSQL( sqlInsert );
         db.close( );
@@ -70,8 +76,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         ArrayList<Charity> charities = new ArrayList<Charity>( );
         while( cursor.moveToNext( ) ) {
             Charity currentCharity
-                    = new Charity(cursor.getString( 0 ),
-                    cursor.getString( 1 ), cursor.getInt( 2 ), cursor.getString(3),cursor.getString(4) );
+                    = new Charity(cursor.getString( 1 ),
+                    cursor.getString( 2 ), cursor.getInt( 0 ), cursor.getString(3),cursor.getString(4), cursor.getDouble(6), cursor.getDouble(5));
             charities.add( currentCharity );
         }
         db.close( );

@@ -33,10 +33,11 @@
         android:id="@+id/button_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Example Location"
+        android:text="Test Map"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:backgroundTint="@color/dark_blue"
+        android:onClick="realMapView"
         android:textSize="18sp" />
 
 

@@ -13,9 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.RatingBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -153,6 +151,7 @@ public class inventoryActivity extends AppCompatActivity {
         //should do nothing because it is the current screen
         return;
     }
+
 
     /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
     private class ButtonHandler implements View.OnClickListener{
