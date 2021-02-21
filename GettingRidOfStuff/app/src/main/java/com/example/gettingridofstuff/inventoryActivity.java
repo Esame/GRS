@@ -73,6 +73,7 @@ public class inventoryActivity extends AppCompatActivity {
         for(int i = 0; i < itemList.size(); i++){
             items.add(itemList.get(i).saveString());
         }
+        editor.putStringSet("INVENTORY", items);
         editor.apply();
     }
 
