@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,12 +39,17 @@ public class inventoryActivity extends AppCompatActivity {
         editor = sharedPref.edit();
 
         ButtonHandler bh = new ButtonHandler();
+        buttonAudio ba = new buttonAudio(this);
         Button home_button = (Button) findViewById(R.id.homebutton);
         home_button.setOnClickListener(bh);
+        home_button.setOnTouchListener(ba);
         Button organization_button = (Button) findViewById(R.id.organizationbutton);
         organization_button.setOnClickListener(bh);
+        organization_button.setOnTouchListener(ba);
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventory_button.setOnClickListener(bh);
+        inventory_button.setOnTouchListener(ba);
+
 
         addItemButton = findViewById(R.id.btn_inventory_add);
 

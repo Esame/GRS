@@ -15,12 +15,16 @@ public class activity_organization extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.organization);
         ButtonHandler bh = new ButtonHandler();
+        buttonAudio ba = new buttonAudio(this);
         Button home_button = (Button) findViewById(R.id.homebutton);
         home_button.setOnClickListener(bh);
+        home_button.setOnTouchListener(ba);
         Button organization_button = (Button) findViewById(R.id.organizationbutton);
         organization_button.setOnClickListener(bh);
+        organization_button.setOnTouchListener(ba);
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventory_button.setOnClickListener(bh);
+        inventory_button.setOnTouchListener(ba);
 
     }
 
