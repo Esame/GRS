@@ -4,6 +4,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -19,9 +30,34 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String ADDRESS = "address";
     private static final String LONGITUDE = "longitude";
     private static final String LATITUDE = "latitude";
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference dbRef = database.getReference();
+    private  ArrayList<Charity> charities = new ArrayList<>();
 
-    public DatabaseManager( Context context ) {
+    public DatabaseManager( Context context, MainActivity parent ) {
         super( context, DATABASE_NAME, null, DATABASE_VERSION );
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                charities.clear();
+                for (DataSnapshot child : snapshot.child("donation").getChildren()) {
+                    Log.i("GRS-DEBUG", child.child("Address").getValue(String.class));
+                    //Not sure what to put for cid here
+                    Charity item = new Charity(child.child("Name").getValue(String.class), child.child("Hours").getValue(String.class), 0,
+                            child.child("Category").getValue(String.class), child.child("Address").getValue(String.class),
+                            Double.parseDouble(child.child("Latitude").getValue(String.class)), Double.parseDouble(child.child("Longitude").getValue(String.class)));
+                    charities.add(item);
+                }
+
+                Log.i("GRS-DEBUG", "ARRAY: " + charities.toString());
+                parent.update();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     /*Initializes our database */
@@ -31,7 +67,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String sqlCreate = "create table " + TABLE_DONATION + "( ";
         sqlCreate +=  ID + " integer primary key autoincrement, ";
         sqlCreate +=  NAME + " text, ";
-        sqlCreate +=    HOURS + " text, ";
+        sqlCreate +=  HOURS + " text, ";
         sqlCreate +=  CATEGORY + " text, ";
         sqlCreate +=  ADDRESS + " text, ";
         sqlCreate +=  LONGITUDE + " double, ";
@@ -68,20 +104,23 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     /*selectAll returns all the Charity items currently in our database */
     public ArrayList<Charity> selectAll( ) {
-        String sqlQuery = "select * from " + TABLE_DONATION;
 
-        SQLiteDatabase db = this.getWritableDatabase( );
-        Cursor cursor = db.rawQuery( sqlQuery, null );
-
-        ArrayList<Charity> charities = new ArrayList<Charity>( );
-        while( cursor.moveToNext( ) ) {
-            Charity currentCharity
-                    = new Charity(cursor.getString( 1 ),
-                    cursor.getString( 2 ), cursor.getInt( 0 ), cursor.getString(3),cursor.getString(4), cursor.getDouble(6), cursor.getDouble(5));
-            charities.add( currentCharity );
-        }
-        db.close( );
         return charities;
+
+//        String sqlQuery = "select * from " + TABLE_DONATION;
+//
+//        SQLiteDatabase db = this.getWritableDatabase( );
+//        Cursor cursor = db.rawQuery( sqlQuery, null );
+//
+//        ArrayList<Charity> charities = new ArrayList<Charity>( );
+//        while( cursor.moveToNext( ) ) {
+//            Charity currentCharity
+//                    = new Charity(cursor.getString( 1 ),
+//                    cursor.getString( 2 ), cursor.getInt( 0 ), cursor.getString(3),cursor.getString(4), cursor.getDouble(6), cursor.getDouble(5));
+//            charities.add( currentCharity );
+//        }
+//        db.close( );
+//        return charities;
     }
     public void deleteAll() {
         SQLiteDatabase db = this.getWritableDatabase( );
