@@ -8,6 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
+
 /*MainActivity handles all actions in activity_main.xml*/
 public class MainActivity extends AppCompatActivity {
     static DatabaseManager db;
@@ -22,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean building = false;
     private boolean houseCare = false;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         organization_button.setOnClickListener(bh);
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventory_button.setOnClickListener(bh);
+        FirebaseApp.initializeApp(this);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
 
         //Create static donation center database when app is first opened
         //charityDatabase();
