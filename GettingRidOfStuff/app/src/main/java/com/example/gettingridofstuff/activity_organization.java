@@ -1,15 +1,30 @@
 package com.example.gettingridofstuff;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
 /*activity_organization handles all actions in organizations.xml*/
 public class activity_organization extends AppCompatActivity {
 
+    private static final int REQUEST_LOCATION = 1;
+
+    private GoogleMap map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +40,8 @@ public class activity_organization extends AppCompatActivity {
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventory_button.setOnClickListener(bh);
         inventory_button.setOnTouchListener(ba);
+
+        //map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 
     }
 
@@ -52,10 +69,27 @@ public class activity_organization extends AppCompatActivity {
 
     }
 
-    public void realMapView(View view){
-        this.finish();
-        Intent myIntent = new Intent(this, MapsActivity.class);
-        this.startActivity(myIntent);
+    public void realMapView(View view) {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        } else {
+            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            double lat = -1;
+            double longi = -1;
+            if (locationGPS != null) {
+                lat = locationGPS.getLatitude();
+                longi = locationGPS.getLongitude();
+                LatLng selfGPS = new LatLng(lat, longi);
+            }
+            this.finish();
+            Intent myIntent = new Intent(this, MapsActivity.class);
+            myIntent.putExtra("lat", lat);
+            myIntent.putExtra("longi", longi);
+            this.startActivity(myIntent);
+        }
     }
 
     /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/

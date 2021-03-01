@@ -2,7 +2,11 @@ package com.example.gettingridofstuff;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -16,7 +20,8 @@ import java.util.ArrayList;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    LocationManager locationManager;
+    LatLng selfGPS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +30,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        double lat = getIntent().getDoubleExtra("lat", 1);
+        double longi = getIntent().getDoubleExtra("longi", 1);
+        Toast toast = Toast.makeText(this, lat + ", " + longi, Toast.LENGTH_SHORT);
+        toast.show();
+        System.out.println(lat + ", " + longi);
+        selfGPS = new LatLng(lat, longi);
     }
+
 
     /**
      * Manipulates the map once available.
