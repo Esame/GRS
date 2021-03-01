@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i("GRS-DEBUG", "STARTING");
         scrollView = findViewById( R.id.scrollView );
         ButtonHandler bh = new ButtonHandler();
         buttonAudio ba = new buttonAudio(this);
@@ -47,12 +49,15 @@ public class MainActivity extends AppCompatActivity {
         //Create static donation center database when app is first opened
         //charityDatabase();
         charityDatabase();
-
     }
    protected void onStart(){
         super.onStart();
 
+       update();
+   }
 
+   public void update(){
+       scrollView.removeAllViewsInLayout();
        // set up the grid layout
        GridLayout grid = new GridLayout( this );
        grid.setRowCount(15);
@@ -211,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
     }
     /*charityDatabase function manually placed Bellingham donation centers into a database */
     public void charityDatabase(){
-        db = new DatabaseManager(this);
+        db = new DatabaseManager(this, this);
         db.deleteAll();
         //for each charity location, insert into database
         //name,hours,id,category,address
