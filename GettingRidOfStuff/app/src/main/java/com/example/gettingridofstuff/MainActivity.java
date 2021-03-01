@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, charity_names);
        search_bar = findViewById(R.id.search_bar);
        search_bar.setAdapter(adapter);
+       search_bar.setThreshold(1);
    }
 
 
