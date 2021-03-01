@@ -83,5 +83,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.close( );
         return charities;
     }
+    public void deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase( );
+        String sqlDelete = "delete from " + TABLE_DONATION;
+        //sqlDelete += " where " + ID + " = " + id;
 
+        db.execSQL( sqlDelete );
+        db.close( );
+    }
 }
