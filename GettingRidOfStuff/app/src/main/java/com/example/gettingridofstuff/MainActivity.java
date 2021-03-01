@@ -47,13 +47,15 @@ public class MainActivity extends AppCompatActivity {
         inventory_button.setOnTouchListener(ba);
 
         //Create static donation center database when app is first opened
-        //charityDatabase();
-        charityDatabase();
+        db = new DatabaseManager(this, this);
+
+        charities = db.selectAll( );
+
+
     }
    protected void onStart(){
         super.onStart();
-
-       update();
+        update();
    }
 
    public void update(){
@@ -86,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
            }
        }
        scrollView.addView( grid );
+
+       for(Charity charity: charities){
+           charity_names.add(charity.getName());
+       }
+       ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, charity_names);
+       search_bar = findViewById(R.id.search_bar);
+       search_bar.setAdapter(adapter);
    }
 
 
@@ -215,19 +224,10 @@ public class MainActivity extends AppCompatActivity {
         popup.show();
     }
     /*charityDatabase function manually placed Bellingham donation centers into a database */
-    public void charityDatabase(){
-        db = new DatabaseManager(this, this);
-        //for each charity location, insert into database
-        //name,hours,id,category,address
-        charities = db.selectAll( );
-        for(Charity charity: charities){
-            charity_names.add(charity.getName());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, charity_names);
-        search_bar = findViewById(R.id.search_bar);
-        search_bar.setAdapter(adapter);
+   // public void charityDatabase(){
 
-    }
+
+    //}
     private void updateView(){
         scrollView.removeAllViewsInLayout( );
         GridLayout grid = new GridLayout( this );
