@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "404915907460",
+    "project_id": "donationcenters-292de",
+    "storage_bucket": "donationcenters-292de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404915907460:android:74d7af03be76d7ed2bcbd1",
+        "android_client_info": {
+          "package_name": "com.example.gettingridofstuff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404915907460-mjn5o4nitvuhcuplml8mfgu0b8g227lj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtDZBnWnPh5UE-T6KJdgmuWgklXf18JnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404915907460-mjn5o4nitvuhcuplml8mfgu0b8g227lj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
