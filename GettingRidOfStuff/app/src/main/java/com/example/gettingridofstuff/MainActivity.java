@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
    protected void onStart(){
         super.onStart();
 
-
+       scrollView.removeAllViewsInLayout( );
        // set up the grid layout
        GridLayout grid = new GridLayout( this );
        grid.setRowCount(15);
