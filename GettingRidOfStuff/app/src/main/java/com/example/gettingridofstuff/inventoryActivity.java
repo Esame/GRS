@@ -50,6 +50,10 @@ public class inventoryActivity extends AppCompatActivity {
         inventory_button.setOnClickListener(bh);
         inventory_button.setOnTouchListener(ba);
 
+        //adding listening to route button
+        Button route_button = (Button) findViewById(R.id.btn_inventory_route);
+        route_button.setOnClickListener(bh);
+
 
         addItemButton = findViewById(R.id.btn_inventory_add);
 
@@ -158,6 +162,24 @@ public class inventoryActivity extends AppCompatActivity {
         return;
     }
 
+    /*Function to handle event when route button is clicked by user */
+    public void route(View view){
+        popupBuilder = new AlertDialog.Builder(this);
+        final View filterPopupView = getLayoutInflater().inflate(R.layout.route_popup, null);
+
+        Button exit_btn = filterPopupView.findViewById(R.id.exit_button);
+        exit_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                //filters.clear();
+                popup.dismiss();
+            }
+        });
+
+
+        popupBuilder.setView(filterPopupView);
+        popup = popupBuilder.create();
+        popup.show();
+    }
 
     /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
     private class ButtonHandler implements View.OnClickListener{
@@ -171,6 +193,9 @@ public class inventoryActivity extends AppCompatActivity {
             }
             else if(buttonClicked == R.id.inventorybutton){
                 inventory(v);
+            }
+            else if(buttonClicked == R.id.btn_inventory_route){
+                route(v);
             }
 
         }

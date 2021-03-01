@@ -34,6 +34,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private DatabaseReference dbRef = database.getReference();
     private  ArrayList<Charity> charities = new ArrayList<>();
 
+    /*Constructor that connects to the Firebase database */
     public DatabaseManager( Context context, MainActivity parent ) {
         super( context, DATABASE_NAME, null, DATABASE_VERSION );
         dbRef.addValueEventListener(new ValueEventListener() {
@@ -122,6 +123,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
 //        db.close( );
 //        return charities;
     }
+
+    /*Currently leftover from local database, will later delete*/
     public void deleteAll() {
         SQLiteDatabase db = this.getWritableDatabase( );
         String sqlDelete = "delete from " + TABLE_DONATION;
