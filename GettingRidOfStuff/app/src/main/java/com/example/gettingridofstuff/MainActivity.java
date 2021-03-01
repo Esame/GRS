@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         //charityDatabase();
         charityDatabase();
 
+
     }
    protected void onStart(){
         super.onStart();
