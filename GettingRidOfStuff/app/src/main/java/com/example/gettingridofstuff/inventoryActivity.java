@@ -167,6 +167,17 @@ public class inventoryActivity extends AppCompatActivity {
         popupBuilder = new AlertDialog.Builder(this);
         final View filterPopupView = getLayoutInflater().inflate(R.layout.route_popup, null);
 
+        //get item list, use to compare categories w database
+        boolean categories[];
+
+        //0 clothes, 1 homegoods, 2 food,
+        categories = new boolean[8];
+
+        for(int i = 0; i < itemList.size(); i++){
+            if(itemList.get(i).type.equals("Food")){
+                categories[0] = true;
+            }
+        }
         Button exit_btn = filterPopupView.findViewById(R.id.exit_button);
         exit_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){

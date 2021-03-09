@@ -9,12 +9,14 @@
     <string name="filter">Filter</string>
     <string name="sample_charity">Sample Charity <br /> sample description</string>
     <string-array name="category_array">
-        <item>Food</item>
         <item>Clothing</item>
-        <item>Furniture</item>
-        <item>Kitchen Utensils</item>
-        <item>Books</item>
         <item>Electronics</item>
+        <item>Homegoods</item>
+        <item>Vehicles</item>
+        <item>Tools</item>
+        <item>Food</item>
+        <item>HouseCareSupplies</item>
+        <item>BuildingMaterials</item>
     </string-array>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCrIUnmar2-JKExW3cNdPi_1iFe7MjfMxU</string>
     <string name="title_activity_maps">Map</string>
