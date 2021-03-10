@@ -12,15 +12,19 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 /*inventoryActivity handles all actions in the activity_inventory.xml*/
 public class inventoryActivity extends AppCompatActivity {
+
 
     private AlertDialog.Builder popupBuilder;
     private AlertDialog popup;
@@ -29,6 +33,7 @@ public class inventoryActivity extends AppCompatActivity {
     ArrayList<inventoryItem> itemList;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
+    private ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,29 +170,94 @@ public class inventoryActivity extends AppCompatActivity {
     /*Function to handle event when route button is clicked by user */
     public void route(View view){
         popupBuilder = new AlertDialog.Builder(this);
-        final View filterPopupView = getLayoutInflater().inflate(R.layout.route_popup, null);
+        final View routePopupView = getLayoutInflater().inflate(R.layout.route_popup, null);
 
         //get item list, use to compare categories w database
         boolean categories[];
 
-        //0 clothes, 1 homegoods, 2 food,
+        //Shows which categories the user's items belong in
         categories = new boolean[8];
 
         for(int i = 0; i < itemList.size(); i++){
-            if(itemList.get(i).type.equals("Food")){
+            if(itemList.get(i).type.equals("Clothing")){
                 categories[0] = true;
             }
+            if(itemList.get(i).type.equals("Electronics")){
+                categories[1] = true;
+            }
+            if(itemList.get(i).type.equals("Homegoods")){
+                categories[2] = true;
+            }
+            if(itemList.get(i).type.equals("Vehicles")){
+                categories[3] = true;
+            }
+            if(itemList.get(i).type.equals("Tools")){
+                categories[4] = true;
+            }
+            if(itemList.get(i).type.equals("Food")){
+                categories[5] = true;
+            }
+            if(itemList.get(i).type.equals("HouseCareSupplies")){
+                categories[6] = true;
+            }
+            if(itemList.get(i).type.equals("BuildingMaterials")){
+                categories[7] = true;
+            }
+
         }
-        Button exit_btn = filterPopupView.findViewById(R.id.exit_button);
+        ArrayList<Charity> matchedCharities= new ArrayList<>();
+        ArrayList<Charity> allCharities = MainActivity.db.selectAll();
+
+        System.out.println("Our categories array is " + categories[0] + categories[1]+ categories[2]+ categories[3]+ categories[4]+ categories[5]+ categories[6]+ categories[7]);
+        for(int j = 0; j < allCharities.size(); j++){
+            System.out.println("Cur charity category" + allCharities.get(j).getCategory());
+            if(categories[0] && allCharities.get(j).getCategory().contains("Clothing")){
+                matchedCharities.add(allCharities.get(j));
+                System.out.println("is saying category is in");
+            }
+            if(categories[1] && allCharities.get(j).getCategory().contains("Electronics")){
+                matchedCharities.add(allCharities.get(j));
+            }
+            if(categories[2] && allCharities.get(j).getCategory().contains("Homegoods")){
+                matchedCharities.add(allCharities.get(j));
+            }
+            if(categories[3] && allCharities.get(j).getCategory().contains("Vehicles")){
+                matchedCharities.add(allCharities.get(j));
+            }
+            if(categories[4] && allCharities.get(j).getCategory().contains("Tools")){
+                matchedCharities.add(allCharities.get(j));
+            }
+            if(categories[5] && allCharities.get(j).getCategory().contains("Food")){
+                matchedCharities.add(allCharities.get(j));
+            }
+            if(categories[6] && allCharities.get(j).getCategory().contains("HouseCareSupplies")){
+                matchedCharities.add(allCharities.get(j));
+            }
+            if(categories[7] && allCharities.get(j).getCategory().contains("BuildingMaterials")){
+                matchedCharities.add(allCharities.get(j));
+            }
+        }
+        scrollView = routePopupView.findViewById( R.id.routeScrollView );
+        GridLayout grid = new GridLayout(this);
+        grid.setRowCount(15);
+        grid.setColumnCount( 1 );
+
+        for(int k = 0; k < matchedCharities.size(); k++){
+            System.out.println("Button added to grid view");
+            CharityButton button = new CharityButton(this, matchedCharities.get(k));
+            button.setText((matchedCharities.get(k).getName() + " " + matchedCharities.get(k).getHours()) + " " + matchedCharities.get(k).getAddress());
+            grid.addView( button);
+        }
+        scrollView.addView( grid );
+        Button exit_btn = routePopupView.findViewById(R.id.exit_button);
         exit_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                //filters.clear();
                 popup.dismiss();
             }
         });
 
 
-        popupBuilder.setView(filterPopupView);
+        popupBuilder.setView(routePopupView);
         popup = popupBuilder.create();
         popup.show();
     }

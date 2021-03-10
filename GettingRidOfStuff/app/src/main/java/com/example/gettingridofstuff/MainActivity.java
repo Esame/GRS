@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
     /*onClick for search button unimplemented*/
     public void search(View v){
         scrollView.removeAllViewsInLayout( );
+
         GridLayout grid = new GridLayout( this );
         String name = search_bar.getText().toString();
 
