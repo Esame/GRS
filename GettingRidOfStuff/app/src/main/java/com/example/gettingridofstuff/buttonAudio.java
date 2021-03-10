@@ -7,8 +7,8 @@ import android.view.View;
 
 public class buttonAudio implements View.OnTouchListener{
 
-    static MediaPlayer clickDown;
-    static MediaPlayer clickUp;
+    private MediaPlayer clickDown;
+    private MediaPlayer clickUp;
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -21,7 +21,18 @@ public class buttonAudio implements View.OnTouchListener{
         clickUp = MediaPlayer.create(ctx, R.raw.click_up);
     }
 
-    public static void buttonClickAudio(MotionEvent event){
+    //set add to true for add item sound, set to false for delete
+    public buttonAudio(Context ctx, boolean add){
+        if(add){
+            clickDown = MediaPlayer.create(ctx, R.raw.click_down);
+            clickUp = MediaPlayer.create(ctx, R.raw.add);
+        }else{
+            clickDown = MediaPlayer.create(ctx, R.raw.click_down);
+            clickUp = MediaPlayer.create(ctx, R.raw.delete);
+        }
+    }
+
+    public void buttonClickAudio(MotionEvent event){
         if(event.getAction() == MotionEvent.ACTION_DOWN){
             clickDown.start();
         }else if(event.getAction() == MotionEvent.ACTION_UP){
