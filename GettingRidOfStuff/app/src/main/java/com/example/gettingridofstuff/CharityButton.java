@@ -1,5 +1,4 @@
 package com.example.gettingridofstuff;
-
 import android.content.Context;
 
 public class CharityButton extends androidx.appcompat.widget.AppCompatButton {
