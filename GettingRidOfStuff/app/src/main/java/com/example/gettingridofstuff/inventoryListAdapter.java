@@ -13,10 +13,12 @@ import java.util.ArrayList;
 public class inventoryListAdapter extends ArrayAdapter<inventoryItem> {
 
     ArrayList<inventoryItem> itemList;
+    Context ctx;
 
     public inventoryListAdapter(Context context, ArrayList<inventoryItem> list){
         super(context, 0, list);
         itemList = list;
+        ctx = context;
     }
 
     @Override
@@ -33,6 +35,8 @@ public class inventoryListAdapter extends ArrayAdapter<inventoryItem> {
         TextView desc = convertView.findViewById(R.id.item_card_description);
         desc.setText(item.type);
 
+
+        buttonAudio bDel = new buttonAudio(ctx, false);
         Button delete = convertView.findViewById(R.id.item_card_delete);
         delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -40,6 +44,7 @@ public class inventoryListAdapter extends ArrayAdapter<inventoryItem> {
                 notifyDataSetChanged();
             }
         });
+        delete.setOnTouchListener(bDel);
 
         return convertView;
     }

@@ -123,9 +123,12 @@ public class inventoryActivity extends AppCompatActivity {
         popupBuilder = new AlertDialog.Builder(this);
         final View itemPopupView = getLayoutInflater().inflate(R.layout.inventory_popup, null);
 
+        buttonAudio bAdd = new buttonAudio(this, true);
+
         //grab fields here
         Button cancelAddButton = itemPopupView.findViewById(R.id.btn_inventory_cancel);
         Button confirmAddButton = itemPopupView.findViewById(R.id.btn_inventory_add);
+        confirmAddButton.setOnTouchListener(bAdd);
         Spinner categorySpinner = itemPopupView.findViewById(R.id.category_spinner);
         EditText nameField = itemPopupView.findViewById(R.id.item_name_input);
         EditText quantity = itemPopupView.findViewById(R.id.item_quantity_input);
