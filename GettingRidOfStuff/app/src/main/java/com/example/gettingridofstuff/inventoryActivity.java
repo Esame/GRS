@@ -2,10 +2,16 @@ package com.example.gettingridofstuff;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,10 +23,16 @@ import android.widget.GridView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
+
+import static java.lang.String.join;
 
 /*inventoryActivity handles all actions in the activity_inventory.xml*/
 public class inventoryActivity extends AppCompatActivity {
@@ -34,12 +46,14 @@ public class inventoryActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     private ScrollView scrollView;
+    private String start_lat;
+    private String start_long;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
-
+        realMapView();
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
@@ -248,7 +262,6 @@ public class inventoryActivity extends AppCompatActivity {
         GridLayout grid = new GridLayout(this);
         grid.setRowCount(15);
         grid.setColumnCount( 1 );
-
         buttonAudio ba = new buttonAudio(this);
 
         for(int k = 0; k < matchedCharities.size(); k++){
@@ -257,6 +270,20 @@ public class inventoryActivity extends AppCompatActivity {
             button.setText((matchedCharities.get(k).getName() + " " + matchedCharities.get(k).getHours()) + " " + matchedCharities.get(k).getAddress());
             button.setOnTouchListener(ba);
             grid.addView( button);
+            String address1 = matchedCharities.get(k).getAddress();
+            //String[] address = location.split(" ");
+            //String address = join("+", list);
+            String address = address1.replace(" ","+");
+            String dest_lat = String.valueOf(matchedCharities.get(k).getLatitude());
+            String dest_long = String.valueOf(matchedCharities.get(k).getLongitude());
+
+            System.out.println(address);
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/dir/?api=1&origin=" + start_lat +","+ start_long + "&destination=" + dest_lat + "," + dest_long));
+                    startActivity(intent);
+                }
+            });
         }
         scrollView.addView( grid );
         Button exit_btn = routePopupView.findViewById(R.id.exit_button);
@@ -272,7 +299,34 @@ public class inventoryActivity extends AppCompatActivity {
         popup = popupBuilder.create();
         popup.show();
     }
+    public void realMapView() {
+        Location locationGPS = null;
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        } else {
+            locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            double lat = -1;
+            double longi = -1;
 
+            this.finish();
+            Intent myIntent = new Intent(this, MapsActivity.class);
+            myIntent.putExtra("lat", lat);
+            myIntent.putExtra("longi", longi);
+            this.startActivity(myIntent);
+        }
+        start_lat = "48.733843";
+        start_long = "-122.48647";
+        if (locationGPS != null) {
+            double latitude = locationGPS.getLatitude();
+            double longitude = locationGPS.getLongitude();
+            start_lat = String.valueOf(latitude);
+            start_long = String.valueOf(longitude);
+        }
+
+    }
     /*ButtonHandler function is used to listen to buttons in the header and change their functionality*/
     private class ButtonHandler implements View.OnClickListener{
         public void onClick(View v){
