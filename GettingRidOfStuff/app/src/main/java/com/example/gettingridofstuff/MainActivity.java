@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
     /*organization onClick function should make the activity_organization the current view*/
     public void organization(View view){
-        Intent myIntent = new Intent(this, activity_organization.class);
+        Intent myIntent = new Intent(this, MapsActivity.class);
         this.startActivity(myIntent);
 
         //animation should come from right to left because inventory is farthest right
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     public void navigation(View v){
 
     }
-    /*onClick for search button unimplemented*/
+
     public void search(View v){
         scrollView.removeAllViewsInLayout( );
 

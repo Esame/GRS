@@ -18,7 +18,12 @@ import android.widget.Button;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
+/*
 
+DEPRECATED, NOT IN USE
+
+
+ */
 /*activity_organization handles all actions in organizations.xml*/
 public class activity_organization extends AppCompatActivity {
 

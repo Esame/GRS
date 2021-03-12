@@ -158,7 +158,7 @@ public class inventoryActivity extends AppCompatActivity {
     /*organization onClick function should make the activity_organization the current view*/
     public void organization(View view){
         this.finish();
-        Intent myIntent = new Intent(this, activity_organization.class);
+        Intent myIntent = new Intent(this, MapsActivity.class);
         this.startActivity(myIntent);
         //animation should come from right to left because inventory is farthest right
         overridePendingTransition(R.anim.right_to_left, R.anim.right_to_left);
