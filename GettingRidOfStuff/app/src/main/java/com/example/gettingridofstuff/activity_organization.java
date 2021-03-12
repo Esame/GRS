@@ -40,6 +40,8 @@ public class activity_organization extends AppCompatActivity {
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventory_button.setOnClickListener(bh);
         inventory_button.setOnTouchListener(ba);
+        Button map_button = (Button) findViewById(R.id.button_1);
+        map_button.setOnTouchListener(ba);
 
         //map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 

@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         Button inventory_button = (Button) findViewById(R.id.inventorybutton);
         inventory_button.setOnClickListener(bh);
         inventory_button.setOnTouchListener(ba);
+        Button filter_button = (Button) findViewById(R.id.filter);
+        filter_button.setOnTouchListener(ba);
 
         //Create static donation center database when app is first opened
         db = new DatabaseManager(this, this);
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
        grid.setColumnCount( 1 );
 
        // create array of buttons, 2 per row
+
+       buttonAudio ba = new buttonAudio(this);
        CharityButton [] buttons = new CharityButton[15];
        ButtonHandler bh = new ButtonHandler( );
 
@@ -79,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
            // set up event handling
            buttons[i].setOnClickListener( bh );
-
+           buttons[i].setOnTouchListener(ba);
            // add the button to grid
            grid.addView( buttons[i], 500, GridLayout.LayoutParams.MATCH_PARENT);
            i++;
@@ -134,11 +138,13 @@ public class MainActivity extends AppCompatActivity {
         CharityButton button;
         Charity none = new Charity("","",0,"", "",0, 0);
         Boolean found = false;
+        buttonAudio ba = new buttonAudio(this);
 
         for(Charity charity: charities){
             if(charity.getName().equals(name)){
                 button = new CharityButton(this, charity);
                 button.setText((charity.getName() + " " + charity.getHours()));
+                button.setOnTouchListener(ba);
                 found = true;
                 grid.addView( button, 500, GridLayout.LayoutParams.MATCH_PARENT );
                 break;
@@ -147,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
         if(!found){
             button = new CharityButton(this, none);
             button.setText("This place is not in our database");
+            button.setOnTouchListener(ba);
             grid.addView( button, 500, GridLayout.LayoutParams.MATCH_PARENT );
         }
         scrollView.addView(grid);
@@ -160,8 +167,10 @@ public class MainActivity extends AppCompatActivity {
         filters.clear();
         popupBuilder = new AlertDialog.Builder(this);
         final View filterPopupView = getLayoutInflater().inflate(R.layout.filter_popup, null);
+        buttonAudio ba = new buttonAudio(this);
 
         Button clothes_btn = filterPopupView.findViewById(R.id.clothes_btn);
+        clothes_btn.setOnTouchListener(ba);
         clothes_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.add("Clothing");
@@ -169,44 +178,52 @@ public class MainActivity extends AppCompatActivity {
 
         });
         Button food_btn = filterPopupView.findViewById(R.id.food_btn);
+        food_btn.setOnTouchListener(ba);
         food_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.add("food");
             }
         });
         Button homeGoods_btn = filterPopupView.findViewById(R.id.home_goods_btn);
+        homeGoods_btn.setOnTouchListener(ba);
         homeGoods_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.add("homeGoods");
             }
         });
         Button electronics_btn = filterPopupView.findViewById(R.id.electronics_btn);
+        electronics_btn.setOnTouchListener(ba);
         electronics_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.add("electronics");
             }
         });Button tools_btn = filterPopupView.findViewById(R.id.tools_btn);
+        tools_btn.setOnTouchListener(ba);
         tools_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.add("tools");
             }
         });Button vehicle_btn = filterPopupView.findViewById(R.id.vehicles_btn);
+        vehicle_btn.setOnTouchListener(ba);
         vehicle_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.add("vehicles");
             }
         });Button building_btn = filterPopupView.findViewById(R.id.building_btn);
+        building_btn.setOnTouchListener(ba);
         building_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.add("BuildingMaterials");
             }
         });Button houseCare_btn = filterPopupView.findViewById(R.id.house_care_btn);
+        houseCare_btn.setOnTouchListener(ba);
         houseCare_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.add("HouseCareSupplies");
             }
         });
         Button cancel_btn = filterPopupView.findViewById(R.id.cancel);
+        cancel_btn.setOnTouchListener(ba);
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 filters.clear();
@@ -214,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button confirm_btn = filterPopupView.findViewById(R.id.confirm);
+        confirm_btn.setOnTouchListener(ba);
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 popup.dismiss();
@@ -239,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
         // create array of buttons, 2 per row
         CharityButton [] buttons = new CharityButton[15];
         ButtonHandler bh = new ButtonHandler( );
+        buttonAudio ba = new buttonAudio(this);
 
         // fill the grid
         int i = 0;
@@ -258,6 +277,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // set up event handling
                         buttons[i].setOnClickListener(bh);
+                        buttons[i].setOnTouchListener(ba);
 
                         // add the button to grid
                         grid.addView(buttons[i], 500, GridLayout.LayoutParams.MATCH_PARENT);

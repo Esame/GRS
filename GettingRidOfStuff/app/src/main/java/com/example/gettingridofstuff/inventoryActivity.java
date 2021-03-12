@@ -58,9 +58,11 @@ public class inventoryActivity extends AppCompatActivity {
         //adding listening to route button
         Button route_button = (Button) findViewById(R.id.btn_inventory_route);
         route_button.setOnClickListener(bh);
+        route_button.setOnTouchListener(ba);
 
 
         addItemButton = findViewById(R.id.btn_inventory_add);
+        addItemButton.setOnTouchListener(ba);
 
         addItemButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -123,6 +125,8 @@ public class inventoryActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
 
+        buttonAudio ba = new buttonAudio(this);
+        cancelAddButton.setOnTouchListener(ba);
         cancelAddButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 popup.dismiss();
@@ -245,14 +249,18 @@ public class inventoryActivity extends AppCompatActivity {
         grid.setRowCount(15);
         grid.setColumnCount( 1 );
 
+        buttonAudio ba = new buttonAudio(this);
+
         for(int k = 0; k < matchedCharities.size(); k++){
             System.out.println("Button added to grid view");
             CharityButton button = new CharityButton(this, matchedCharities.get(k));
             button.setText((matchedCharities.get(k).getName() + " " + matchedCharities.get(k).getHours()) + " " + matchedCharities.get(k).getAddress());
+            button.setOnTouchListener(ba);
             grid.addView( button);
         }
         scrollView.addView( grid );
         Button exit_btn = routePopupView.findViewById(R.id.exit_button);
+        exit_btn.setOnTouchListener(ba);
         exit_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 popup.dismiss();
