@@ -15,7 +15,7 @@
         android:layout_margin="5sp"
         android:text="Inventory"
         android:textSize="13sp"
-        android:onClick="gotoInventory"/>
+        />
 
     <Button
         android:id="@+id/homebutton"
@@ -24,7 +24,7 @@
         android:layout_margin="5sp"
         android:text="Home"
         android:textSize="13sp"
-        android:onClick="gotoHome"/>
+        />
 
     <Button
         android:id="@+id/organizationbutton"
@@ -33,6 +33,6 @@
         android:layout_margin="5sp"
         android:text="Organizations"
         android:textSize="13sp"
-        android:onClick="gotoOrganization"/>
+        />
 
 </LinearLayout>

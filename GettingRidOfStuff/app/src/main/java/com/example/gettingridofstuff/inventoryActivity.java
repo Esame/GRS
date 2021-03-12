@@ -310,12 +310,6 @@ public class inventoryActivity extends AppCompatActivity {
             locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             double lat = -1;
             double longi = -1;
-
-            this.finish();
-            Intent myIntent = new Intent(this, MapsActivity.class);
-            myIntent.putExtra("lat", lat);
-            myIntent.putExtra("longi", longi);
-            this.startActivity(myIntent);
         }
         start_lat = "48.733843";
         start_long = "-122.48647";
